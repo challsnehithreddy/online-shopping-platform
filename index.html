@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover thoughtfully selected everyday essentials at SnehithInfo.">
+    <title>SnehithInfo — Find Your Everyday</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap');
+
+        :root {
+            --ink: #25251f;
+            --muted: #77776e;
+            --cream: #f6f5f0;
+            --green: #344c3d;
+            --lime: #dce7a9;
+            --line: #e7e6df;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            color: var(--ink);
+            background: #fff;
+            font-family: "DM Sans", sans-serif;
+        }
+
+        button,
+        input {
+            font: inherit;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .site-header {
+            min-height: 76px;
+            padding: 0 7.5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .logo {
+            flex: 0 0 auto;
+            font-size: 27px;
+            font-weight: 700;
+            letter-spacing: -1.5px;
+        }
+
+        .logo span {
+            color: #91a15b;
+        }
+
+        .main-nav,
+        .header-actions {
+            display: flex;
+            align-items: center;
+        }
+
+        .main-nav {
+            gap: 32px;
+        }
+
+        .header-actions {
+            gap: 22px;
+        }
+
+        .main-nav a,
+        .icon-button {
+            color: #55564f;
+            font-size: 13px;
+        }
+
+        .main-nav a:hover,
+        .icon-button:hover {
+            color: var(--green);
+        }
+
+        .icon-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 8px 0;
+            border: 0;
+            background: transparent;
+            cursor: pointer;
+        }
+
+        .icon-button > span:first-child {
+            font-size: 19px;
+        }
+
+        .cart-count {
+            width: 20px;
+            height: 20px;
+            display: inline-grid;
+            place-items: center;
+            border-radius: 50%;
+            background: var(--green);
+            color: #fff;
+            font-size: 10px;
+        }
+
+        .hero {
+            min-height: 540px;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+            position: relative;
+            background: var(--cream);
+        }
+
+        .hero-content {
+            width: 100%;
+            max-width: 650px;
+            align-self: center;
+            justify-self: end;
+            padding: 64px clamp(35px, 8vw, 120px) 64px 40px;
+        }
+
+        .eyebrow {
+            margin: 0 0 16px;
+            color: #748153;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            margin: 0;
+            font-size: clamp(58px, 7vw, 88px);
+            line-height: .98;
+            letter-spacing: -6px;
+        }
+
+        .hero h1 span {
+            color: var(--green);
+            font-family: "Playfair Display", serif;
+            font-weight: 500;
+            font-style: italic;
+            letter-spacing: -5px;
+        }
+
+        .hero-copy {
+            max-width: 355px;
+            margin: 24px 0 27px;
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .primary-button {
+            min-height: 49px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            padding: 0 22px;
+            border: 0;
+            background: var(--green);
+            color: #fff;
+            font-size: 12px;
+            cursor: pointer;
+            transition: background .2s, transform .2s;
+        }
+
+        .primary-button:hover {
+            background: #26392e;
+            transform: translateY(-2px);
+        }
+
+        .primary-button span {
+            font-size: 17px;
+        }
+
+        .hero-note {
+            margin-top: 39px;
+            color: var(--muted);
+            font-size: 11px;
+        }
+
+        .note-star {
+            margin-right: 8px;
+            color: #82915a;
+            font-size: 17px;
+            vertical-align: -2px;
+        }
+
+        .hero-image {
+            min-height: 540px;
+            position: relative;
+            background: #d7d2c5 url("https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1400&q=90") center / cover no-repeat;
+        }
+
+        .image-badge {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            right: 10%;
+            bottom: 10%;
+            display: grid;
+            place-content: center;
+            border-radius: 50%;
+            background: var(--lime);
+            color: var(--green);
+            font-size: 10px;
+            line-height: 1.5;
+            letter-spacing: 1px;
+            text-align: center;
+            transform: rotate(9deg);
+        }
+
+        .hero-index {
+            position: absolute;
+            right: 7.5%;
+            bottom: 18px;
+            color: #fff;
+            font-size: 9px;
+            letter-spacing: 1.5px;
+        }
+
+        .shop-section {
+            width: min(100%, 1600px);
+            margin: 0 auto;
+            padding: 88px 7.5% 96px;
+        }
+
+        .section-heading {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 30px;
+            margin-bottom: 32px;
+        }
+
+        .section-heading h2,
+        .newsletter h2 {
+            margin: 0;
+            font-size: clamp(30px, 4vw, 42px);
+            letter-spacing: -1.8px;
+        }
+
+        .section-heading h2 em {
+            color: var(--green);
+            font-family: "Playfair Display", serif;
+            font-weight: 500;
+        }
+
+        .section-description {
+            max-width: 280px;
+            margin: 0 0 4px;
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 1.7;
+        }
+
+        .shop-toolbar {
+            min-height: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            margin-bottom: 22px;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .category-list {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .category-button {
+            padding: 12px 0;
+            border: 0;
+            border-bottom: 2px solid transparent;
+            background: transparent;
+            color: var(--muted);
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        .category-button.active {
+            border-bottom-color: var(--green);
+            color: var(--green);
+            font-weight: 700;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--muted);
+        }
+
+        .search-box > span {
+            font-size: 22px;
+        }
+
+        .search-box input {
+            width: 165px;
+            padding: 9px 0;
+            border: 0;
+            outline: none;
+            color: var(--ink);
+            font-size: 12px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            align-items: start;
+            gap: 20px;
+        }
+
+        .product-card[hidden] {
+            display: none;
+        }
+
+        .product-image {
+            height: clamp(220px, 25vw, 330px);
+            position: relative;
+            overflow: hidden;
+            background: #f0efe9;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            transition: transform .45s;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.045);
+        }
+
+        .product-tag {
+            position: absolute;
+            z-index: 1;
+            top: 13px;
+            left: 13px;
+            padding: 7px 9px;
+            background: #fff;
+            color: var(--green);
+            font-size: 8px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .quick-add {
+            width: 38px;
+            height: 38px;
+            position: absolute;
+            right: 12px;
+            bottom: 12px;
+            border: 0;
+            border-radius: 50%;
+            background: #fff;
+            color: var(--ink);
+            font-size: 25px;
+            line-height: 1;
+            cursor: pointer;
+            transition: color .2s, background .2s, transform .2s;
+        }
+
+        .quick-add:hover {
+            transform: rotate(90deg);
+            background: var(--green);
+            color: #fff;
+        }
+
+        .product-info {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 10px;
+            padding-top: 14px;
+        }
+
+        .product-info h3 {
+            margin: 0 0 6px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .product-info p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 10px;
+        }
+
+        .price {
+            flex: 0 0 auto;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .no-results {
+            padding: 35px 0;
+            color: var(--muted);
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .newsletter {
+            padding: 56px 10%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 36px;
+            background: #f1f2eb;
+        }
+
+        .newsletter .eyebrow {
+            margin-bottom: 10px;
+        }
+
+        .newsletter h2 {
+            font-size: 32px;
+        }
+
+        .newsletter > div > p:last-child {
+            margin: 10px 0 0;
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .newsletter-form {
+            width: min(400px, 100%);
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #9c9e91;
+        }
+
+        .newsletter-form input {
+            width: 100%;
+            min-width: 0;
+            padding: 14px 0;
+            border: 0;
+            outline: 0;
+            background: transparent;
+            font-size: 12px;
+        }
+
+        .newsletter-form button {
+            flex: 0 0 auto;
+            padding: 12px 0 12px 12px;
+            border: 0;
+            background: transparent;
+            color: var(--green);
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        .site-footer {
+            min-height: 100px;
+            padding: 24px 7.5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .site-footer .logo {
+            font-size: 25px;
+        }
+
+        .site-footer p,
+        .site-footer > span {
+            margin: 0;
+            color: var(--muted);
+            font-size: 11px;
+        }
+
+        .modal-backdrop {
+            position: fixed;
+            z-index: 5;
+            inset: 0;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: #1c211dc9;
+        }
+
+        .modal-backdrop.open {
+            display: flex;
+        }
+
+        .login-modal {
+            width: min(440px, 100%);
+            padding: 42px;
+            position: relative;
+            background: #fff;
+            box-shadow: 0 20px 70px #0002;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 12px;
+            right: 17px;
+            border: 0;
+            background: transparent;
+            color: var(--muted);
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+        .login-modal h2 {
+            margin: 0;
+            font-size: 27px;
+            letter-spacing: -1px;
+        }
+
+        .login-description {
+            margin: 11px 0 24px;
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 1.7;
+        }
+
+        .login-modal form {
+            display: grid;
+            gap: 9px;
+        }
+
+        .login-modal label {
+            margin-top: 7px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .login-modal input {
+            width: 100%;
+            height: 43px;
+            padding: 0 12px;
+            border: 1px solid var(--line);
+            outline-color: var(--green);
+            font-size: 12px;
+        }
+
+        .login-submit {
+            width: 100%;
+            margin-top: 13px;
+        }
+
+        .signup-note {
+            margin: 21px 0 0;
+            color: var(--muted);
+            font-size: 11px;
+            text-align: center;
+        }
+
+        .signup-note a {
+            color: var(--green);
+            font-weight: 700;
+            text-decoration: underline;
+        }
+
+        .toast {
+            position: fixed;
+            z-index: 10;
+            right: 24px;
+            bottom: 24px;
+            max-width: calc(100% - 48px);
+            padding: 14px 20px;
+            background: var(--green);
+            color: #fff;
+            font-size: 12px;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(10px);
+            transition: opacity .2s, transform .2s;
+        }
+
+        .toast.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+        }
+
+        @media (max-width: 900px) {
+            .site-header {
+                padding-right: 5%;
+                padding-left: 5%;
+            }
+
+            .hero-content {
+                padding-right: 35px;
+                padding-left: 8%;
+            }
+
+            .shop-section {
+                padding-right: 5%;
+                padding-left: 5%;
+            }
+
+            .product-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 28px 18px;
+            }
+
+            .product-image {
+                height: clamp(260px, 38vw, 340px);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .site-header {
+                min-height: 66px;
+            }
+
+            .logo {
+                font-size: 23px;
+            }
+
+            .main-nav {
+                display: none;
+            }
+
+            .header-actions {
+                gap: 14px;
+            }
+
+            .account-label,
+            .cart-label {
+                display: none;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-image {
+                min-height: 300px;
+                grid-row: 1;
+            }
+
+            .hero-content {
+                justify-self: stretch;
+                padding: 42px 8% 45px;
+            }
+
+            .hero h1 {
+                font-size: clamp(58px, 15vw, 72px);
+            }
+
+            .hero-note {
+                margin-top: 28px;
+            }
+
+            .hero-index {
+                display: none;
+            }
+
+            .shop-section {
+                padding: 62px 5% 70px;
+            }
+
+            .section-heading {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 12px;
+                margin-bottom: 23px;
+            }
+
+            .shop-toolbar {
+                align-items: stretch;
+                flex-direction: column;
+                gap: 8px;
+                padding-bottom: 8px;
+            }
+
+            .category-list {
+                width: 100%;
+                justify-content: space-between;
+                gap: 8px;
+            }
+
+            .search-box {
+                width: 100%;
+                border-bottom: 1px solid var(--line);
+            }
+
+            .search-box input {
+                width: 100%;
+            }
+
+            .product-grid {
+                gap: 24px 12px;
+            }
+
+            .product-image {
+                height: clamp(165px, 52vw, 260px);
+            }
+
+            .product-info {
+                flex-direction: column;
+                gap: 7px;
+            }
+
+            .newsletter {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 22px;
+                padding: 42px 7%;
+            }
+
+            .newsletter-form {
+                width: 100%;
+            }
+
+            .site-footer {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 8px;
+                padding: 24px 7%;
+            }
+
+            .login-modal {
+                padding: 36px 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <a class="logo" href="#" aria-label="SnehithInfo home">snehith<span>info</span></a>
+
+        <nav class="main-nav" aria-label="Main navigation">
+            <a href="#shop">Shop</a>
+            <a href="#story">Our story</a>
+            <a href="#newsletter">Newsletter</a>
+        </nav>
+
+        <div class="header-actions">
+            <button class="icon-button account-button" id="loginButton" type="button">
+                <span aria-hidden="true">♙</span>
+                <span class="account-label">Account</span>
+            </button>
+            <button class="icon-button cart-button" type="button" aria-label="Shopping bag">
+                <span aria-hidden="true">▱</span>
+                <span class="cart-label">Bag</span>
+                <span class="cart-count" id="cartCount">0</span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" id="story">
+            <div class="hero-content">
+                <p class="eyebrow">A little better, every day</p>
+                <h1>Find your<br><span>everyday.</span></h1>
+                <p class="hero-copy">Thoughtful finds for your home, your routine, and everywhere in between.</p>
+                <a class="primary-button" href="#shop">Explore the collection <span aria-hidden="true">→</span></a>
+                <div class="hero-note"><span class="note-star">✳</span> Curated with care. Made to be loved.</div>
+            </div>
+
+            <div class="hero-image" role="img" aria-label="A selection of stylish home and lifestyle products">
+                <div class="image-badge">GOOD THINGS<br>LIVE HERE</div>
+            </div>
+            <div class="hero-index">01 — THE EVERYDAY EDIT</div>
+        </section>
+
+        <section class="shop-section" id="shop">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">The SnehithInfo edit</p>
+                    <h2>Good things, <em>picked for you.</em></h2>
+                </div>
+                <p class="section-description">Useful, beautiful, and ready to make your day a little brighter.</p>
+            </div>
+
+            <div class="shop-toolbar">
+                <div class="category-list" aria-label="Filter products">
+                    <button class="category-button active" data-category="all" type="button">All finds</button>
+                    <button class="category-button" data-category="home" type="button">Home</button>
+                    <button class="category-button" data-category="style" type="button">Style</button>
+                    <button class="category-button" data-category="tech" type="button">Tech</button>
+                </div>
+                <label class="search-box">
+                    <span aria-hidden="true">⌕</span>
+                    <input id="searchInput" type="search" placeholder="Find something..." aria-label="Search products">
+                </label>
+            </div>
+
+            <div class="product-grid" id="productGrid">
+                <article class="product-card" data-category="home" data-name="Everyday ceramic mug">
+                    <div class="product-image">
+                        <span class="product-tag">BESTSELLER</span>
+                        <img src="https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?auto=format&fit=crop&w=800&q=85" alt="Minimal ceramic mug on a table">
+                        <button class="quick-add" type="button" aria-label="Add Everyday Ceramic Mug to bag">+</button>
+                    </div>
+                    <div class="product-info">
+                        <div><h3>Everyday Ceramic Mug</h3><p>Stoneware · Sand</p></div>
+                        <span class="price">$18</span>
+                    </div>
+                </article>
+
+                <article class="product-card" data-category="style" data-name="Weekend carryall">
+                    <div class="product-image">
+                        <span class="product-tag">JUST IN</span>
+                        <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=800&q=85" alt="Classic leather shoulder bag">
+                        <button class="quick-add" type="button" aria-label="Add Weekend Carryall to bag">+</button>
+                    </div>
+                    <div class="product-info">
+                        <div><h3>Weekend Carryall</h3><p>Everyday canvas · Natural</p></div>
+                        <span class="price">$42</span>
+                    </div>
+                </article>
+
+                <article class="product-card" data-category="home" data-name="Soft glow table lamp">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=800&q=85" alt="Warm light from a modern table lamp">
+                        <button class="quick-add" type="button" aria-label="Add Soft Glow Table Lamp to bag">+</button>
+                    </div>
+                    <div class="product-info">
+                        <div><h3>Soft Glow Table Lamp</h3><p>Warm light · Cream</p></div>
+                        <span class="price">$56</span>
+                    </div>
+                </article>
+
+                <article class="product-card" data-category="tech" data-name="Pocket bluetooth speaker">
+                    <div class="product-image">
+                        <span class="product-tag">FAN FAVORITE</span>
+                        <img src="https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?auto=format&fit=crop&w=800&q=85" alt="Compact portable wireless speaker">
+                        <button class="quick-add" type="button" aria-label="Add Pocket Bluetooth Speaker to bag">+</button>
+                    </div>
+                    <div class="product-info">
+                        <div><h3>Pocket Bluetooth Speaker</h3><p>Big sound · Forest</p></div>
+                        <span class="price">$35</span>
+                    </div>
+                </article>
+            </div>
+            <p class="no-results" id="noResults" hidden>No finds matched that search. Try another word.</p>
+        </section>
+
+        <section class="newsletter" id="newsletter">
+            <div>
+                <p class="eyebrow">A good thing in your inbox</p>
+                <h2>Stay in the know.</h2>
+                <p>New finds, little stories, and 10% off your first order.</p>
+            </div>
+            <form class="newsletter-form" id="newsletterForm">
+                <label class="visually-hidden" for="emailInput">Your email address</label>
+                <input id="emailInput" type="email" placeholder="Your email address" required>
+                <button type="submit">Sign me up <span aria-hidden="true">→</span></button>
+            </form>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <a class="logo" href="#" aria-label="SnehithInfo home">snehith<span>info</span></a>
+        <p>Good things for the everyday.</p>
+        <span>© 2025 SnehithInfo</span>
+    </footer>
+
+    <div class="modal-backdrop" id="loginModal" aria-hidden="true">
+        <section class="login-modal" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
+            <button class="modal-close" id="closeLogin" type="button" aria-label="Close login">×</button>
+            <p class="eyebrow">Welcome back</p>
+            <h2 id="loginTitle">Your SnehithInfo, your way.</h2>
+            <p class="login-description">Sign in to save your favorites and keep track of your orders.</p>
+            <form id="loginForm">
+                <label for="loginEmail">Email address</label>
+                <input id="loginEmail" type="email" placeholder="you@example.com" required>
+                <label for="loginPassword">Password</label>
+                <input id="loginPassword" type="password" placeholder="Enter your password" required>
+                <button class="primary-button login-submit" type="submit">Sign in <span aria-hidden="true">→</span></button>
+            </form>
+            <p class="signup-note">New around here? <a href="#" id="signupLink">Create an account</a></p>
+        </section>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script>
+        const cartCount = document.getElementById("cartCount");
+        const toast = document.getElementById("toast");
+        let cartItems = 0;
+        let toastTimer;
+
+        function showToast(message) {
+            toast.textContent = message;
+            toast.classList.add("visible");
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => toast.classList.remove("visible"), 2500);
+        }
+
+        document.querySelectorAll(".quick-add").forEach((button) => {
+            button.addEventListener("click", () => {
+                cartItems += 1;
+                cartCount.textContent = cartItems;
+                const productName = button.closest(".product-card").dataset.name;
+                showToast(`${productName} added to your bag`);
+            });
+        });
+
+        const categoryButtons = document.querySelectorAll(".category-button");
+        const searchInput = document.getElementById("searchInput");
+        const products = document.querySelectorAll(".product-card");
+        const noResults = document.getElementById("noResults");
+        let activeCategory = "all";
+
+        function filterProducts() {
+            const query = searchInput.value.trim().toLowerCase();
+            let visibleCount = 0;
+
+            products.forEach((product) => {
+                const categoryMatches =
+                    activeCategory === "all" ||
+                    product.dataset.category === activeCategory;
+                const searchMatches =
+                    product.dataset.name.toLowerCase().includes(query);
+                const isVisible = categoryMatches && searchMatches;
+
+                product.hidden = !isVisible;
+                if (isVisible) visibleCount += 1;
+            });
+
+            noResults.hidden = visibleCount > 0;
+        }
+
+        categoryButtons.forEach((button) => {
+            button.addEventListener("click", () => {
+                categoryButtons.forEach((item) => item.classList.remove("active"));
+                button.classList.add("active");
+                activeCategory = button.dataset.category;
+                filterProducts();
+            });
+        });
+
+        searchInput.addEventListener("input", filterProducts);
+
+        const loginModal = document.getElementById("loginModal");
+        const loginButton = document.getElementById("loginButton");
+
+        function closeLoginModal() {
+            loginModal.classList.remove("open");
+            loginModal.setAttribute("aria-hidden", "true");
+        }
+
+        loginButton.addEventListener("click", () => {
+            loginModal.classList.add("open");
+            loginModal.setAttribute("aria-hidden", "false");
+            document.getElementById("loginEmail").focus();
+        });
+
+        document.getElementById("closeLogin").addEventListener("click", closeLoginModal);
+
+        loginModal.addEventListener("click", (event) => {
+            if (event.target === loginModal) closeLoginModal();
+        });
+
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") closeLoginModal();
+        });
+
+        document.getElementById("loginForm").addEventListener("submit", (event) => {
+            event.preventDefault();
+            closeLoginModal();
+            showToast("Demo sign-in complete. Connect a backend for real accounts.");
+        });
+
+        document.getElementById("signupLink").addEventListener("click", (event) => {
+            event.preventDefault();
+            showToast("Account creation can be connected to a backend.");
+        });
+
+        document.getElementById("newsletterForm").addEventListener("submit", (event) => {
+            event.preventDefault();
+            event.currentTarget.reset();
+            showToast("Thanks for signing up!");
+        });
+    </script>
+</body>
+</html>
